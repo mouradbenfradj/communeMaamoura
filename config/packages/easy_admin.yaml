@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            form:
+                title: 'Add User'
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                    - 'id'
+                    - { property: 'uuid', type: 'text', label: 'uuid' }
+                    - property: 'roles'
+                      type: 'choice'
+                      type_options:
+                        expanded: true
+                        choices: { 'ROLE_USER': 'Normal user', 'ROLE_ADMIN': 'Administrator' }
+            new:
+                form_options: { validation_groups: ['Default', 'User'] }
+            edit:
+                title:  'Edit User'
